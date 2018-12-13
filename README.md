@@ -25,6 +25,7 @@ The image currently uses the following variables:
 | MYSQL_PORT                   | Port to use                                 |
 | MYSQL_USER                   | User to connect with                        |
 | MYSQL_PASSWORD               | Password to connect with                    |
+| MYSQL_CLUSTER_NAMESPACE      | Namespace where the cluster is located      |
 
 Running in a container requires a working InnoDB cluster. The container runs
 tries to bootstrap from the given MYSQL_HOST in bootstrap mode

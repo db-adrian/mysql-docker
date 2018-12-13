@@ -56,6 +56,7 @@ if [ "$1" = 'mysqlrouter' ]; then
     echo "Succesfully contacted mysql server at $MYSQL_HOST. Trying to bootstrap."
     mysqlrouter --bootstrap "$MYSQL_USER@$MYSQL_HOST:$MYSQL_PORT" --user=mysqlrouter --directory /tmp/mysqlrouter --force < /tmp/mysqlrouter-pass
     sed -i -e 's/logging_folder=.*$/logging_folder=/' /tmp/mysqlrouter/mysqlrouter.conf
+    sed -i -e "s/mysql\:\/\/[^\.]*\.[^\:]*/&.${MYSQL_CLUSTER_NAMESPACE}/g" /tmp/mysqlrouter/mysqlrouter.conf
     echo "Starting mysql-router."
     exec "$@" --config /tmp/mysqlrouter/mysqlrouter.conf
 fi
